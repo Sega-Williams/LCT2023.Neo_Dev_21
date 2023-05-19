@@ -1083,7 +1083,7 @@ GameObject:
   - component: {fileID: 1823570902}
   - component: {fileID: 1823570901}
   m_Layer: 0
-  m_Name: SceneController
+  m_Name: UI_Controllers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1101,7 +1101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcd696dfaea49773a757abb77c11ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pref_menuWindow: {fileID: 0}
+  gameSceneName: TestScene
+  menuSceneName: Menu
 --- !u!4 &1823570902
 Transform:
   m_ObjectHideFlags: 0
