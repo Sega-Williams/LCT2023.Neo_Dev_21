@@ -34,5 +34,4 @@ public class PlayerController : MonoBehaviour
         speedometerText.SetText(speed + " км/ч");
         rpmText.SetText("об/м: " + rpm);
     }
-
 }
