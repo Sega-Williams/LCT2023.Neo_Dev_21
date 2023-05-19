@@ -27,7 +27,23 @@ public class UI_Menu_Controller : MonoBehaviour
         Time.timeScale = 1;
     }
 
-        // called first
+
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Debug.Log("Esc");
+            if(SceneManager.GetSceneByName(menuSceneName) != SceneManager.GetActiveScene()){
+                SceneManager.LoadScene(menuSceneName, LoadSceneMode.Additive);
+                MenuOpen();
+            }
+            else{
+                SceneManager.UnloadSceneAsync(menuSceneName);
+                MenuClose();
+            } 
+        }
+    }
+
+    // called first
     void OnEnable()
     {
         Debug.Log("OnEnable called");
@@ -48,18 +64,4 @@ public class UI_Menu_Controller : MonoBehaviour
         Debug.Log("OnDisable");
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            Debug.Log("Esc");
-            if(SceneManager.GetSceneByName(menuSceneName) != SceneManager.GetActiveScene()){
-                SceneManager.LoadScene(menuSceneName, LoadSceneMode.Additive);
-                // SceneManager.SetActiveScene(SceneManager.GetSceneByName(menuSceneName));
-            }
-            else{
-                SceneManager.UnloadSceneAsync(menuSceneName);
-            } 
-        }
-    }
-
 }
