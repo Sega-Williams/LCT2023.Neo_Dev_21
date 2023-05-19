@@ -7,6 +7,10 @@ public class P_Controller : MonoBehaviour
     float gasPedal;
     public float breakPower;
 
+    // For UI
+    [HideInInspector]
+    public int currentSpeed;
+
     // Values to be assigned
     [Header("Assigned")]
     public WheelCollider[] wheelColls;
@@ -65,99 +69,58 @@ public class P_Controller : MonoBehaviour
         fixedRpm = ((CurrentSpeed() * 518) / 60) * (gearRatios[0] * gearRatios[gear]);
     }
 
-    // void AutomaticControl ()
-    // {
-    //     gasPedal = Input.GetAxis("Gas") * maxRpm;
-    //     AddBreakTorq(Input.GetAxisRaw("Break") * breakPower);
-
-    //     if (fixedRpm < startEngineRpm - 100 && gear != gearRatios.Length - 1)
-    //         gear = 0;
-
-    //     if (Input.GetKeyDown(KeyCode.LeftShift))
-    //     {
-    //         gear = 0;
-    //         reversingGear = 1;
-    //     }
-    //     if (Input.GetKeyDown(KeyCode.LeftControl) && gear < 2)
-    //     {
-    //         gear = gearRatios.Length - 1;
-    //         reversingGear = -1;
-    //     }
-
-    //     if (gear > 0)
-    //     {
-    //         if (fixedRpm > nextGearRpm)
-    //             if (gear < gearRatios.Length - 2)
-    //             {
-    //                 gear++;
-    //                 reversingGear = 1;
-    //             }
-    //         if (fixedRpm < previousGearRpm)
-    //             if (gear > 1 && gear != gearRatios.Length - 1)
-    //             {
-    //                 gear--;
-    //                 reversingGear = 1;
-    //             }
-    //     }
-    //     else
-    //     {
-    //         if (currentRpm > startEngineRpm + 100)
-    //             gear = 1;
-    //         reversingGear = 1;
-    //     }
-
-        
-    //     if (fixedRpm < maxRpm - 500) // -500 olma sebebi kesiciye girmesi
-    //         AddTorq(CalculateCurrentTorq(gear, gasPedal) * reversingGear);
-    //     else
-    //         AddTorq(CalculateCurrentTorq(gear, fixedRpm) * reversingGear);
-    // }
         void AutomaticControl ()
     {
         gasPedal = Input.GetAxis("Vertical") * maxRpm;
         AddBreakTorq(Input.GetAxisRaw("Vertical") * breakPower);
 
-        if (fixedRpm < startEngineRpm - 100 && gear != gearRatios.Length - 1)
-            gear = 0;
+        if(gasPedal > 0)
+        {
+            if(reversingGear == -1){
+                reversingGear = 1;
+                // if(currentSpeed == 0){}
+                // else{
+                //     AddBreakTorq(Input.GetAxisRaw("Vertical") * breakPower);
+                // }
+            }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            gear = 0;
-            reversingGear = 1;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftControl) && gear < 2)
-        {
-            gear = gearRatios.Length - 1;
-            reversingGear = -1;
+            if (gear > 0)
+            {
+                if (fixedRpm > nextGearRpm)
+                    if (gear < gearRatios.Length - 2)
+                    {
+                        gear++;
+                        reversingGear = 1;
+                    }
+                if (fixedRpm < previousGearRpm)
+                    if (gear > 1 && gear != gearRatios.Length - 1)
+                    {
+                        gear--;
+                        reversingGear = 1;
+                    }
+            }
+            else
+            {
+                if (currentRpm > startEngineRpm + 100)
+                    gear = 1;
+                reversingGear = 1;
+            }
         }
 
-        if (gear > 0)
-        {
-            if (fixedRpm > nextGearRpm)
-                if (gear < gearRatios.Length - 2)
-                {
-                    gear++;
-                    reversingGear = 1;
-                }
-            if (fixedRpm < previousGearRpm)
-                if (gear > 1 && gear != gearRatios.Length - 1)
-                {
-                    gear--;
-                    reversingGear = 1;
-                }
-        }
-        else
+        if(gasPedal < 0)
         {
             if (currentRpm > startEngineRpm + 100)
-                gear = 1;
-            reversingGear = 1;
+                gear = gearRatios.Length - 1;
+            reversingGear = -1;
+            gasPedal *= reversingGear;
         }
 
-        
-        if (fixedRpm < maxRpm - 500) // -500 olma sebebi kesiciye girmesi
-            AddTorq(CalculateCurrentTorq(gear, gasPedal) * reversingGear);
-        else
-            AddTorq(CalculateCurrentTorq(gear, fixedRpm) * reversingGear);
+        if(gasPedal != 0){
+            if (fixedRpm < maxRpm - 500)
+                AddTorq(CalculateCurrentTorq(gear, gasPedal) * reversingGear);
+            else
+                AddTorq(CalculateCurrentTorq(gear, fixedRpm) * reversingGear);
+        }
     }
     
     // Break
@@ -165,16 +128,23 @@ public class P_Controller : MonoBehaviour
     {        
         if (torq == -1)
         {
-            for (int i = 0; i < wheelColls.Length; i++)
-                wheelColls[i].brakeTorque = fixedRpm;
+            if(reversingGear > 0){
+                for (int i = 0; i < wheelColls.Length; i++)
+                    wheelColls[i].brakeTorque = fixedRpm;
+            }
         }
         else
         {
-            for (int i = 0; i < wheelColls.Length; i++)
-                wheelColls[i].brakeTorque = 0;
+            if(reversingGear < 0){
+                for (int i = 0; i < wheelColls.Length; i++)
+                    wheelColls[i].brakeTorque = torq;
+            }else{
+                for (int i = 0; i < wheelColls.Length; i++)
+                    wheelColls[i].brakeTorque = 0;
 
-            wheelColls[wheelColls.Length - 1].brakeTorque = torq;
-            wheelColls[wheelColls.Length - 2].brakeTorque = torq;
+                wheelColls[wheelColls.Length - 1].brakeTorque = torq;
+                wheelColls[wheelColls.Length - 2].brakeTorque = torq;
+            }
         }
     }
     // Add torq
@@ -200,7 +170,7 @@ public class P_Controller : MonoBehaviour
     void CalculateRpm(float startEngineRpm)
     {
         float oran = HP / maxRpm;
-        if (Input.GetAxisRaw("Gas") > 0)
+        if (Input.GetAxisRaw("Vertical") != 0)
         {
             if (currentRpm < maxRpm - 500)
                 currentRpm += gasPedal * oran;
@@ -241,6 +211,9 @@ public class P_Controller : MonoBehaviour
     {
         float speed = rb.velocity.magnitude;
         speed *= 3.6f; //is multiplied by a 3.6 kmh
+
+        currentSpeed = (int)speed;
+
         return speed;
     }
 
