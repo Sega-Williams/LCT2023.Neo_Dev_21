@@ -65,10 +65,57 @@ public class P_Controller : MonoBehaviour
         fixedRpm = ((CurrentSpeed() * 518) / 60) * (gearRatios[0] * gearRatios[gear]);
     }
 
-    void AutomaticControl ()
+    // void AutomaticControl ()
+    // {
+    //     gasPedal = Input.GetAxis("Gas") * maxRpm;
+    //     AddBreakTorq(Input.GetAxisRaw("Break") * breakPower);
+
+    //     if (fixedRpm < startEngineRpm - 100 && gear != gearRatios.Length - 1)
+    //         gear = 0;
+
+    //     if (Input.GetKeyDown(KeyCode.LeftShift))
+    //     {
+    //         gear = 0;
+    //         reversingGear = 1;
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.LeftControl) && gear < 2)
+    //     {
+    //         gear = gearRatios.Length - 1;
+    //         reversingGear = -1;
+    //     }
+
+    //     if (gear > 0)
+    //     {
+    //         if (fixedRpm > nextGearRpm)
+    //             if (gear < gearRatios.Length - 2)
+    //             {
+    //                 gear++;
+    //                 reversingGear = 1;
+    //             }
+    //         if (fixedRpm < previousGearRpm)
+    //             if (gear > 1 && gear != gearRatios.Length - 1)
+    //             {
+    //                 gear--;
+    //                 reversingGear = 1;
+    //             }
+    //     }
+    //     else
+    //     {
+    //         if (currentRpm > startEngineRpm + 100)
+    //             gear = 1;
+    //         reversingGear = 1;
+    //     }
+
+        
+    //     if (fixedRpm < maxRpm - 500) // -500 olma sebebi kesiciye girmesi
+    //         AddTorq(CalculateCurrentTorq(gear, gasPedal) * reversingGear);
+    //     else
+    //         AddTorq(CalculateCurrentTorq(gear, fixedRpm) * reversingGear);
+    // }
+        void AutomaticControl ()
     {
-        gasPedal = Input.GetAxis("Gas") * maxRpm;
-        AddBreakTorq(Input.GetAxisRaw("Break") * breakPower);
+        gasPedal = Input.GetAxis("Vertical") * maxRpm;
+        AddBreakTorq(Input.GetAxisRaw("Vertical") * breakPower);
 
         if (fixedRpm < startEngineRpm - 100 && gear != gearRatios.Length - 1)
             gear = 0;
@@ -110,7 +157,7 @@ public class P_Controller : MonoBehaviour
         if (fixedRpm < maxRpm - 500) // -500 olma sebebi kesiciye girmesi
             AddTorq(CalculateCurrentTorq(gear, gasPedal) * reversingGear);
         else
-            AddTorq(-CalculateCurrentTorq(gear, fixedRpm) * reversingGear);
+            AddTorq(CalculateCurrentTorq(gear, fixedRpm) * reversingGear);
     }
     
     // Break
