@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rb;
     private TextMeshProUGUI speedometerText, rpmText;
-    private float turnSpeed = 20.0f, speed; 
+    private float turnSpeed = 90.0f, speed; 
     private float horizontalInput, verticalInput;  
     private float horsePower = 1000; 
     public float rpm; 
