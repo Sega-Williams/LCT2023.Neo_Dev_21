@@ -412,8 +412,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3208463206768917102}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.6, z: 0}
+  m_LocalRotation: {x: -0, y: -0.2771203, z: -0, w: 0.9608352}
+  m_LocalPosition: {x: 19.6, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -423,7 +423,7 @@ Transform:
   - {fileID: 4878459943812950787}
   m_Father: {fileID: 2584382351247751661}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -32.177, z: 0}
 --- !u!33 &8407093635227234788
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakPower: 1
+  currentSpeed: 0
   wheelColls:
   - {fileID: 2364577915921609027}
   - {fileID: 5182734855548740516}
@@ -577,15 +578,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   gear: 0
   gearRatios:
-  - 1
-  - 2
-  - 3
+  - 10
+  - 7
   - 4
-  - 5
-  - 6
+  - 3
   reversingGear: 0
-  nextGearRpm: 0
-  previousGearRpm: 0
+  nextGearRpm: 5500
+  previousGearRpm: 1800
 --- !u!1 &3718209913418215655
 GameObject:
   m_ObjectHideFlags: 0
