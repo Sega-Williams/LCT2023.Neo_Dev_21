@@ -905,6 +905,8 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 200
   maxSteeringAngle: 30
+  key_Brake: 308
+  reversingSpeed: 30
   currentSpeed: 0
   maxRpm: 7500
   currentRpm: 0
@@ -1040,7 +1042,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7873246827052826210}
-  m_LocalRotation: {x: -0, y: 0.018474005, z: -0, w: 0.99982935}
+  m_LocalRotation: {x: 0, y: 0.01847329, z: 0, w: 0.9998294}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

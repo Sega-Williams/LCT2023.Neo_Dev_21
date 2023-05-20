@@ -1235,10 +1235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5031970923454549448, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-      propertyPath: key_Brake
-      value: 308
-      objectReference: {fileID: 0}
     - target: {fileID: 7352325312988062936, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
       propertyPath: m_RootOrder
       value: 8
