@@ -2,28 +2,107 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Controller : MonoBehaviour
-{
-    float gasPedal;
-    public float breakPower;
+// public class P_Controller : MonoBehaviour
+// {
+
+//     // Values to be assigned
+//     [Header("Assigned")]
+//     public WheelCollider[] wheelColls;
+//     public Transform[] wheelMeshs;
+    
+
+
+
+
+
+
+//     private void FixedUpdate() {
+
+//         // // Depending on the speed and calculate wheel rpm
+//         // fixedRpm = ((CurrentSpeed() * 518) / 60) * (gearRatios[0] * gearRatios[gear]);
+//     }
+
+//     void AutomaticControl ()
+//     {
+//         // if(gasPedal != 0)
+//         //     AddTorq(CalculateCurrentTorq(1, gasPedal));
+//         // else
+//         //     AddBreakTorq(breakPower * currentRpm);
+//     }
+    
+//     // Add torq
+//     void AddTorq (float torq)
+//     {       
+//         for (int i = 0; i < wheelColls.Length; i++)
+//             wheelColls[i].motorTorque = torq;
+//     }
+
+
+
+    
+//     // the process of wheel rotation
+//     void WheelSteer (float angel)
+//     {
+//         wheelColls[0].steerAngle = angel;
+//         wheelColls[1].steerAngle = angel;
+//     }
+//     void MeshMove ()
+//     {
+//         Vector3 pos;
+//         Quaternion quat;
+
+//         for(int i = 0; i < wheelColls.Length; i++)
+//         {
+//             wheelColls[i].GetWorldPose(out pos, out quat);
+//             wheelMeshs[i].position = pos;
+//             wheelMeshs[i].rotation = quat;
+//         }
+//     }
+
+//     // speed calculation 
+//     public float CurrentSpeed ()
+//     {
+//         float speed = rb.velocity.magnitude;
+//         speed *= 3.6f; //is multiplied by a 3.6 kmh
+
+//         currentSpeed = (int)speed;
+
+//         return speed;
+//     }
+
+//     // Given the power to the wheels, selects one of 
+//     void SelectWheelHit()
+//     {
+//         wheelColls[wheelColls.Length - 1].GetGroundHit(out wheelHit);
+//     }
+
+[System.Serializable]
+public class AxleInfo {
+    public WheelCollider leftWheel;
+    public WheelCollider rightWheel;
+    public Transform leftWheelMesh;
+    public Transform rightWheelMesh;
+    public bool motor;
+    public bool steering;
+}
+    
+public class P_Controller : MonoBehaviour {
+    public List<AxleInfo> axleInfos; 
+    public float maxMotorTorque;
+    public float maxSteeringAngle;
+
+    // Controller
+    [SerializeField] KeyCode key_Brake; 
+    [SerializeField] int reversingSpeed = 30; // brake to reverse move
 
     // For UI
     [HideInInspector]
     public int currentSpeed;
-
-    // Values to be assigned
-    [Header("Assigned")]
-    public WheelCollider[] wheelColls;
-    public Transform[] wheelMeshs;
-    
-
     // Rpm variable
     [Header("Rpm Variable")]
     public float maxRpm;
     public float currentRpm;
-    public float fixedRpm;
     public float startEngineRpm;
-
     // Torq Variable
     [Header("Torq variable")]
     public float HP;
@@ -41,119 +120,115 @@ public class P_Controller : MonoBehaviour
     public int previousGearRpm;
 
     // Private
-    WheelHit wheelHit;
     Rigidbody rb;
+
+    // Gas Variables
+    float motor;
 
     private void Start()
     {
-        wheelHit = new WheelHit(); 
-
         rb = GetComponent<Rigidbody>();
-        SelectWheelHit();
     }
 
-    private void FixedUpdate() {
-        // Automatic gear control
-        AutomaticControl();
-
-        // Rpm calculation
-        CalculateRpm(startEngineRpm);
-
-        // the process of wheel rotation     
-        WheelSteer(30f * Input.GetAxis("Horizontal"));
-
-        //Mesh tracking
-        MeshMove();
-
-        // Depending on the speed and calculate wheel rpm
-        fixedRpm = ((CurrentSpeed() * 518) / 60) * (gearRatios[0] * gearRatios[gear]);
-    }
-
-        void AutomaticControl ()
-    {
-        gasPedal = Input.GetAxis("Vertical") * maxRpm;
-        AddBreakTorq(Input.GetAxisRaw("Vertical") * breakPower);
-
-        if(gasPedal > 0)
-        {
-            if(reversingGear == -1){
-                reversingGear = 1;
-                // if(currentSpeed == 0){}
-                // else{
-                //     AddBreakTorq(Input.GetAxisRaw("Vertical") * breakPower);
-                // }
-            }
-
-            if (gear > 0)
-            {
-                if (fixedRpm > nextGearRpm)
-                    if (gear < gearRatios.Length - 2)
-                    {
-                        gear++;
-                        reversingGear = 1;
-                    }
-                if (fixedRpm < previousGearRpm)
-                    if (gear > 1 && gear != gearRatios.Length - 1)
-                    {
-                        gear--;
-                        reversingGear = 1;
-                    }
-            }
-            else
-            {
-                if (currentRpm > startEngineRpm + 100)
-                    gear = 1;
-                reversingGear = 1;
-            }
-        }
-
-        if(gasPedal < 0)
-        {
-            if (currentRpm > startEngineRpm + 100)
-                gear = gearRatios.Length - 1;
-            reversingGear = -1;
-            gasPedal *= reversingGear;
-        }
-
-        if(gasPedal != 0){
-            if (fixedRpm < maxRpm - 500)
-                AddTorq(CalculateCurrentTorq(gear, gasPedal) * reversingGear);
-            else
-                AddTorq(CalculateCurrentTorq(gear, fixedRpm) * reversingGear);
-        }
+    // finds the corresponding visual wheel
+    // correctly applies the transform
+    public void ApplyLocalPositionToVisuals(WheelCollider collider, Transform visualWheel)
+    {    
+        Vector3 position;
+        Quaternion rotation;
+        collider.GetWorldPose(out position, out rotation);
+    
+        visualWheel.transform.position = position;
+        visualWheel.transform.rotation = rotation;
     }
     
-    // Break
-    public void AddBreakTorq (float torq)
+    public void FixedUpdate()
     {        
-        if (torq == -1)
-        {
-            if(reversingGear > 0){
-                for (int i = 0; i < wheelColls.Length; i++)
-                    wheelColls[i].brakeTorque = fixedRpm;
+        MoveControl();
+        CurrentSpeed();
+    }
+
+    // Controller logic
+    private void MoveControl(){
+        bool gasPedal = Input.GetAxisRaw("Vertical") != 0;
+        int reversingGear = (int)Input.GetAxisRaw("Vertical");
+        CalculateRpm(reversingGear);
+        CalculateGear(reversingGear);
+        motor = currentRpm * Input.GetAxisRaw("Vertical");
+
+        float currTorq = CalculateCurrentTorq(gear, motor);
+        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+    
+        foreach (AxleInfo axleInfo in axleInfos) {
+            // Steering wheels
+            if (axleInfo.steering) {
+                axleInfo.leftWheel.steerAngle = steering;
+                axleInfo.rightWheel.steerAngle = steering;
             }
+            // Visual steering wheels
+            ApplyLocalPositionToVisuals(axleInfo.leftWheel, axleInfo.leftWheelMesh);
+            ApplyLocalPositionToVisuals(axleInfo.rightWheel, axleInfo.rightWheelMesh);
+
+            // Brake
+            bool brake = false;
+            if( (motor < 0 && currentSpeed > reversingSpeed) || Input.GetKey(KeyCode.LeftAlt)){
+                Debug.Log("Brake");
+                brake = true;
+            }
+            axleInfo.leftWheel.brakeTorque = brake? maxRpm : !gasPedal? currentRpm : 0;
+            axleInfo.rightWheel.brakeTorque = brake? maxRpm : !gasPedal? currentRpm : 0;
+
+            // Gas
+            if (axleInfo.motor) {
+                axleInfo.leftWheel.motorTorque = !gasPedal? 0 : brake? 0 : currTorq * reversingGear;
+                axleInfo.rightWheel.motorTorque = !gasPedal? 0 : brake? 0 : currTorq * reversingGear;
+            }
+        }
+    }
+    // Gear calculation
+    void CalculateGear(int reversingGear){
+        if(reversingGear < 0 && currentSpeed < reversingSpeed){
+            gear = gearRatios.Length - 1;
+
+            return;
+        }
+        else if(currentRpm > gear * ((maxRpm - 1000)  / gearRatios.Length)  && gear < gearRatios.Length - 1){
+            // Debug.Log("Gear Up");
+            ++gear;
+        }
+        else if(currentRpm < gear * ((maxRpm + 1000) / gearRatios.Length) && gear > 1){
+            // Debug.Log("Gear Down");
+            --gear;
+        }
+        else if(currentRpm < startEngineRpm / 2){
+            // Debug.Log("Gear Neutral");
+            gear = 0;
+        }
+    }
+    // Rpm calculation
+    void CalculateRpm(int reversingGear)
+    {
+        float oran = HP / maxRpm;
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+            // Debug.Log("RPM");
+            if (currentRpm < maxRpm - 500)
+                currentRpm += reversingGear * motor * oran;
+            if (currentRpm > maxRpm - 500)
+                if (currentRpm != maxRpm - 500)
+                    currentRpm -= 50f;
         }
         else
         {
-            if(reversingGear < 0){
-                for (int i = 0; i < wheelColls.Length; i++)
-                    wheelColls[i].brakeTorque = torq;
-            }else{
-                for (int i = 0; i < wheelColls.Length; i++)
-                    wheelColls[i].brakeTorque = 0;
-
-                wheelColls[wheelColls.Length - 1].brakeTorque = torq;
-                wheelColls[wheelColls.Length - 2].brakeTorque = torq;
-            }
+            // Debug.Log("Without RPM");
+            if (currentRpm >= startEngineRpm)
+                currentRpm -= maxRpm * oran;
+            if (currentRpm < startEngineRpm)
+                currentRpm = startEngineRpm;
         }
     }
-    // Add torq
-    void AddTorq (float torq)
-    {       
-        for (int i = 0; i < wheelColls.Length; i++)
-            wheelColls[i].motorTorque = torq;
-    }
-        // Torque calculation
+    
+    // Torque calculation
     float CalculateCurrentTorq(int gear, float rpm)
     {
         float currentTorqVoid = 0;
@@ -166,47 +241,7 @@ public class P_Controller : MonoBehaviour
         return currentTorqVoid;
     }
 
-    //  rpm calculation
-    void CalculateRpm(float startEngineRpm)
-    {
-        float oran = HP / maxRpm;
-        if (Input.GetAxisRaw("Vertical") != 0)
-        {
-            if (currentRpm < maxRpm - 500)
-                currentRpm += gasPedal * oran;
-            if (currentRpm > maxRpm - 500)
-                if (currentRpm != maxRpm - 500)
-                    currentRpm -= 50f;
-        }
-        else
-        {
-            if (currentRpm >= startEngineRpm)
-                currentRpm -= maxRpm * oran;
-            if (currentRpm < startEngineRpm)
-                currentRpm = startEngineRpm;
-        }
-    }
-    
-    // the process of wheel rotation
-    void WheelSteer (float angel)
-    {
-        wheelColls[0].steerAngle = angel;
-        wheelColls[1].steerAngle = angel;
-    }
-    void MeshMove ()
-    {
-        Vector3 pos;
-        Quaternion quat;
-
-        for(int i = 0; i < wheelColls.Length; i++)
-        {
-            wheelColls[i].GetWorldPose(out pos, out quat);
-            wheelMeshs[i].position = pos;
-            wheelMeshs[i].rotation = quat;
-        }
-    }
-
-    // speed calculation 
+    // Speed calculation 
     public float CurrentSpeed ()
     {
         float speed = rb.velocity.magnitude;
@@ -216,10 +251,5 @@ public class P_Controller : MonoBehaviour
 
         return speed;
     }
-
-    // Given the power to the wheels, selects one of 
-    void SelectWheelHit()
-    {
-        wheelColls[wheelColls.Length - 1].GetGroundHit(out wheelHit);
-    }
 }
+
