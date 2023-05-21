@@ -12,6 +12,7 @@ public class UI_PauseMenuController : MonoBehaviour
     
     private void Start() {
         btn_BackToMainMenu.onClick.AddListener(() => {
+            UI_Menu_Controller.Instance.PauseMenu_Close();
             SceneManager.LoadScene(mainMenuSceneName);
         });
         btn_Continue.onClick.AddListener(() => {
