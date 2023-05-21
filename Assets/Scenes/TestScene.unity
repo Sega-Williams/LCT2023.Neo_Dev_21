@@ -860,9 +860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cff45c5577f0556a60a19bab858cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedometerText: {fileID: 486253906}
-  rpmText: {fileID: 334160234}
-  p_Controller: {fileID: 5505903248723814417}
 --- !u!1 &961871931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1232,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.13999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.1299996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9847131
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.17390755
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.009666658
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0017072028
+      objectReference: {fileID: 0}
     - target: {fileID: 7352325312988062936, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1285,14 +1306,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
---- !u!114 &5505903248723814417 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5031970923454549448, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-  m_PrefabInstance: {fileID: 701931735369147865}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a19f591f4606c278a9b514dcab218271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

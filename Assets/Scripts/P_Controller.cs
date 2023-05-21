@@ -2,80 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// public class P_Controller : MonoBehaviour
-// {
-
-//     // Values to be assigned
-//     [Header("Assigned")]
-//     public WheelCollider[] wheelColls;
-//     public Transform[] wheelMeshs;
-    
-
-
-
-
-
-
-//     private void FixedUpdate() {
-
-//         // // Depending on the speed and calculate wheel rpm
-//         // fixedRpm = ((CurrentSpeed() * 518) / 60) * (gearRatios[0] * gearRatios[gear]);
-//     }
-
-//     void AutomaticControl ()
-//     {
-//         // if(gasPedal != 0)
-//         //     AddTorq(CalculateCurrentTorq(1, gasPedal));
-//         // else
-//         //     AddBreakTorq(breakPower * currentRpm);
-//     }
-    
-//     // Add torq
-//     void AddTorq (float torq)
-//     {       
-//         for (int i = 0; i < wheelColls.Length; i++)
-//             wheelColls[i].motorTorque = torq;
-//     }
-
-
-
-    
-//     // the process of wheel rotation
-//     void WheelSteer (float angel)
-//     {
-//         wheelColls[0].steerAngle = angel;
-//         wheelColls[1].steerAngle = angel;
-//     }
-//     void MeshMove ()
-//     {
-//         Vector3 pos;
-//         Quaternion quat;
-
-//         for(int i = 0; i < wheelColls.Length; i++)
-//         {
-//             wheelColls[i].GetWorldPose(out pos, out quat);
-//             wheelMeshs[i].position = pos;
-//             wheelMeshs[i].rotation = quat;
-//         }
-//     }
-
-//     // speed calculation 
-//     public float CurrentSpeed ()
-//     {
-//         float speed = rb.velocity.magnitude;
-//         speed *= 3.6f; //is multiplied by a 3.6 kmh
-
-//         currentSpeed = (int)speed;
-
-//         return speed;
-//     }
-
-//     // Given the power to the wheels, selects one of 
-//     void SelectWheelHit()
-//     {
-//         wheelColls[wheelColls.Length - 1].GetGroundHit(out wheelHit);
-//     }
-
 [System.Serializable]
 public class AxleInfo {
     public WheelCollider leftWheel;
@@ -155,8 +81,14 @@ public class P_Controller : MonoBehaviour {
         CalculateRpm(reversingGear);
         CalculateGear(reversingGear);
         motor = currentRpm * Input.GetAxisRaw("Vertical");
+        
+        float currTorq;
+        if(motor == 0){
+            currTorq = 0;
+        }else{
+            currTorq = CalculateCurrentTorq(gear, motor);
+        }
 
-        float currTorq = CalculateCurrentTorq(gear, motor);
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
     
         foreach (AxleInfo axleInfo in axleInfos) {
@@ -171,17 +103,18 @@ public class P_Controller : MonoBehaviour {
 
             // Brake
             bool brake = false;
-            if( (motor < 0 && currentSpeed > reversingSpeed) || Input.GetKey(KeyCode.LeftAlt)){
+            if( (motor < 0 && currentSpeed > reversingSpeed) || Input.GetKey(key_Brake) || !gasPedal){
                 Debug.Log("Brake");
                 brake = true;
             }
+
             axleInfo.leftWheel.brakeTorque = brake? maxRpm : !gasPedal? currentRpm : 0;
             axleInfo.rightWheel.brakeTorque = brake? maxRpm : !gasPedal? currentRpm : 0;
 
             // Gas
             if (axleInfo.motor) {
-                axleInfo.leftWheel.motorTorque = !gasPedal? 0 : brake? 0 : currTorq * reversingGear;
-                axleInfo.rightWheel.motorTorque = !gasPedal? 0 : brake? 0 : currTorq * reversingGear;
+                axleInfo.leftWheel.motorTorque = currTorq * reversingGear;
+                axleInfo.rightWheel.motorTorque = currTorq * reversingGear;
             }
         }
     }

@@ -24266,7 +24266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: TestScene
-  menuSceneName: Menu
+  menuSceneName: PauseMenu
 --- !u!4 &656595094
 Transform:
   m_ObjectHideFlags: 0
@@ -26754,30 +26754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.1400003
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -7.1300035
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98471314
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.17390746
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.0096666785
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489563584374837611, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.0017072053
-      objectReference: {fileID: 0}
     - target: {fileID: 7352325312988062936, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
       propertyPath: m_RootOrder
       value: 1
