@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class HUD_Speedometr : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI speedometerText, rpmText;
-    [SerializeField] P_Controller p_Controller;
-
+    TextMeshProUGUI speedometerText, rpmText;
+    P_Controller p_Controller;
+    private void Start()
+    {
+        speedometerText = GameObject.FindGameObjectWithTag("speedometer").GetComponent<TextMeshProUGUI>();
+        rpmText = GameObject.FindGameObjectWithTag("rpm").GetComponent<TextMeshProUGUI>();
+        p_Controller = FindObjectOfType<P_Controller>();
+    }
     private void Update() {
         speedometerText.SetText(p_Controller.currentSpeed + " км/ч");
         rpmText.SetText("об/м: " + (int)p_Controller.currentRpm);
