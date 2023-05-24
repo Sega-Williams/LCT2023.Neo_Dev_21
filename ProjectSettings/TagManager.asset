@@ -6,6 +6,8 @@ TagManager:
   tags:
   - speedometer
   - rpm
+  - Checkpoint
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Environment
-  - 
-  - 
+  - Walls
+  - Checkpoints
   - 
   - 
   - 
