@@ -27286,6 +27286,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0017072062
       objectReference: {fileID: 0}
+    - target: {fileID: 5031970923454549448, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: nextGearRpm
+      value: 3500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031970923454549448, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: previousGearRpm
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031970923454549448, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
+      propertyPath: axleInfos.Array.data[1].motor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7352325312988062936, guid: 851989521bde08dcc974e78b798c7b1b, type: 3}
       propertyPath: m_RootOrder
       value: 1
