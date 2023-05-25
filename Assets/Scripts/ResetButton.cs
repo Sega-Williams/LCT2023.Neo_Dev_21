@@ -16,6 +16,7 @@ public class ResetButton : MonoBehaviour
 
     void ResetGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
