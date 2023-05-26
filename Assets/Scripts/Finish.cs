@@ -9,7 +9,7 @@ public class Finish : MonoBehaviour
 {
     [SerializeField] private GameObject finishPanel;
     private int counter = 0;
-    private Dictionary<int, string> leaderBoard = new Dictionary<int, string>();
+    public Dictionary<int, string> leaderBoard = new Dictionary<int, string>();
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.TryGetComponent<PathFollower>(out PathFollower bot) || other.gameObject.TryGetComponent<P_Controller>(out P_Controller player))
