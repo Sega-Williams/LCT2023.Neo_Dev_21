@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: scene1-night
-  pref_SettingsWindow: {fileID: 0}
+  pref_SettingsWindow: {fileID: 2903493071349254558, guid: c4f26a4acfc7ce0de9ad5aa755264af5, type: 3}
   pref_TutorialWindow: {fileID: 0}
   pref_CreditsWindow: {fileID: 0}
   btn_StartGame: {fileID: 2006194152}
