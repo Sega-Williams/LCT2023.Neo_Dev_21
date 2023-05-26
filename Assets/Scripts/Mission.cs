@@ -12,7 +12,7 @@ public class Mission : MonoBehaviour
     }
     public void StartGame(float activeMission)
     {
-        var text = GetComponentInChildren<TextMeshProUGUI>().text = $"{saveData.currentLevel} уровень\nМиссия: первым прийти к финишу";
+        var text = GetComponentInChildren<TextMeshProUGUI>().text = $"{saveData.currentLevel} СѓСЂРѕРІРµРЅСЊ\nРњРёСЃСЃРёСЏ: РїРµСЂРІС‹Рј РїСЂРёР№С‚Рё Рє С„РёРЅРёС€Сѓ";
         gameObject.SetActive(activeMission == 1);
         //Time.timeScale = activeMission == 1 ? 0 : 1;
     }
