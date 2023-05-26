@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="SO", fileName ="Save Data")]
 public class SaveData : ScriptableObject
 {
-    public int currentLevel = 0;
-    public string namePlayer;
+    public int currentLevel = 1;
+    public string namePlayer = "Player";
 }

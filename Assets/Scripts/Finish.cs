@@ -22,7 +22,7 @@ public class Finish : MonoBehaviour
                 string output = "";
                 foreach (var pair in leaderBoard)
                 {
-                    output += pair.Key + "место: " + pair.Value + "\n";
+                    output += pair.Key + " место: " + pair.Value + "\n";
                 }
                 finishPanel.GetComponentInChildren<TextMeshProUGUI>().text = output;
                 Time.timeScale = 0;

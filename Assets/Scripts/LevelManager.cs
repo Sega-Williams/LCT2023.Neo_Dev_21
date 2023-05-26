@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
         if (collision.gameObject.TryGetComponent<P_Controller>(out P_Controller playerNow)) 
         {
             int playerPlace = finish.leaderBoard.FirstOrDefault(x => x.Value == saveData.namePlayer).Key;
-            if (playerPlace<=1)
+            if (playerPlace<=3)
             {
                 saveData.currentLevel++;
             }

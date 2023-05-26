@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Save Data
   m_EditorClassIdentifier: 
   currentLevel: 1
-  namePlayer: 
+  namePlayer: Player
