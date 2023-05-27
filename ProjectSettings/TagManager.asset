@@ -8,6 +8,7 @@ TagManager:
   - rpm
   - Checkpoint
   - Wall
+  - Bot
   layers:
   - Default
   - TransparentFX

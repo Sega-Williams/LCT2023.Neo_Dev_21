@@ -15,6 +15,9 @@ public class BotMovement : MonoBehaviour
 
     private void Start()
     {
+    }
+    private void OnEnable()
+    {
         _agent = GetComponent<NavMeshAgent>();
 
         _pathPoints = new Transform[path.transform.childCount];
@@ -22,8 +25,8 @@ public class BotMovement : MonoBehaviour
         {
             _pathPoints[i] = path.transform.GetChild(i);
         }
-    }
 
+    }
     private void Update()
     {
         Walk();
