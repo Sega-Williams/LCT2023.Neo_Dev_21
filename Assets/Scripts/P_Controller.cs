@@ -91,7 +91,8 @@ public class P_Controller : MonoBehaviour {
         }
 
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-    
+        float motorAxleTorq = currTorq * reversingGear;
+
         foreach (AxleInfo axleInfo in axleInfos) {
             // Steering wheels
             if (axleInfo.steering) {
@@ -104,18 +105,24 @@ public class P_Controller : MonoBehaviour {
 
             // Brake
             bool brake = false;
-            if( (motor < 0 && currentSpeed > reversingSpeed) || Input.GetKey(key_Brake) || !gasPedal){
+            if( (motor != (motor * reversingGear) && currentSpeed > reversingSpeed) || Input.GetKey(key_Brake)){
                 // Debug.Log("Brake");
                 brake = true;
             }
 
-            axleInfo.leftWheel.brakeTorque = brake? maxRpm : !gasPedal? currentRpm : 0;
-            axleInfo.rightWheel.brakeTorque = brake? maxRpm : !gasPedal? currentRpm : 0;
+            // brake torque on steering wheels is less than rear
+            if(axleInfo.steering){
+                axleInfo.leftWheel.brakeTorque = brake? maxRpm/3 : 0;
+                axleInfo.rightWheel.brakeTorque = brake? maxRpm/3 : 0;
+            }else{
+                axleInfo.leftWheel.brakeTorque = brake? maxRpm : 0;
+                axleInfo.rightWheel.brakeTorque = brake? maxRpm : 0;
+            }
 
             // Gas
             if (axleInfo.motor) {
-                axleInfo.leftWheel.motorTorque = currTorq * reversingGear;
-                axleInfo.rightWheel.motorTorque = currTorq * reversingGear;
+                axleInfo.leftWheel.motorTorque = motor != 0? motorAxleTorq : axleInfo.leftWheel.motorTorque * 0.83f; // 0.83 - speed of lost torque
+                axleInfo.rightWheel.motorTorque = motor != 0? motorAxleTorq : axleInfo.leftWheel.motorTorque * 0.83f; // 0.83 - speed of lost torque
             }
         }
     }
@@ -168,7 +175,7 @@ public class P_Controller : MonoBehaviour {
         float currentTorqVoid = 0;
 
         if (gear != 0)
-            currentTorqVoid = (gearRatios[0] * gearRatios[gear]) * motorTorqGraphic.Evaluate(rpm);
+            currentTorqVoid = (gearRatios[0] / gearRatios[gear]) * motorTorqGraphic.Evaluate(rpm);
         else
             currentTorqVoid = 0;
 
