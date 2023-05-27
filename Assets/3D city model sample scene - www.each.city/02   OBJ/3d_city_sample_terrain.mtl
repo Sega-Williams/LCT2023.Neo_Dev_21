@@ -1,0 +1,228 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 14.11.2022 17:23:53
+
+newmtl buildings_commercial
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_educational
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_houses
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_industrial
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_parkings
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_public
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_religious
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_residential
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl buildings_unclassified
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl a_sphalt_markings
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka C:\Tools\Libs\Maps\m_asphalt_markings.jpg
+	map_Kd C:\Tools\Libs\Maps\m_asphalt_markings.jpg
+
+newmtl sidewalks__material
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka C:\Tools\Libs\Maps\m_sidewalk_s.jpg
+	map_Kd C:\Tools\Libs\Maps\m_sidewalk_s.jpg
+
+newmtl a_sphalt_service
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka C:\Tools\Libs\Maps\m_asphalt_service_s.jpg
+	map_Kd C:\Tools\Libs\Maps\m_asphalt_service_s.jpg
+
+newmtl roads_parkings
+	Ns 0.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.078431 0.078431 0.078431
+	Kd 0.078431 0.078431 0.078431
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka C:\Tools\Libs\Maps\m_asphalt_parking_s.jpg
+	map_Kd C:\Tools\Libs\Maps\m_asphalt_parking_s.jpg
+
+newmtl sidewalks
+	Ns 0.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.643137 0.643137 0.643137
+	Kd 0.643137 0.643137 0.643137
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka C:\Tools\Libs\Maps\m_sidewalk_s.jpg
+	map_Kd C:\Tools\Libs\Maps\m_sidewalk_s.jpg
+
+newmtl railways
+	Ns 0.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.356863 0.364706 0.356863
+	Kd 0.356863 0.364706 0.356863
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+
+newmtl buildings_detailed
+	Ns 0.000000
+	Ni 1.520000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.003922 0.003922 0.003922
+	Kd 0.705882 0.705882 0.705882
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Kd C:\Tools\Libs\Maps\m_buildings.jpg
+
+newmtl Material__26
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka C:\Work\export\surface_Ottawa.jpg
+	map_Kd C:\Work\export\surface_Ottawa.jpg
