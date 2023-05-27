@@ -105,7 +105,7 @@ public class P_Controller : MonoBehaviour {
             // Brake
             bool brake = false;
             if( (motor < 0 && currentSpeed > reversingSpeed) || Input.GetKey(key_Brake) || !gasPedal){
-                Debug.Log("Brake");
+                // Debug.Log("Brake");
                 brake = true;
             }
 
