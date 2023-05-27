@@ -1997,12 +1997,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _originAuthority: 1
-  _latitude: 55.75929766813429
-  _longitude: 37.555115189554236
-  _height: 1300.080457661217
-  _ecefX: 2852187.1027853424
-  _ecefY: 2192922.4252911108
-  _ecefZ: 5250484.155160239
+  _latitude: 55.75930664357067
+  _longitude: 37.55513111660106
+  _height: 1301.08084854571
+  _ecefX: 2852186.2843973488
+  _ecefY: 2192923.0576025215
+  _ecefZ: 5250485.544557194
   _scale: 1
 --- !u!4 &84371560
 Transform:
@@ -2012,7 +2012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84371558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 974, y: 1132, z: 256.1}
+  m_LocalPosition: {x: 976, y: 1145.3, z: 1037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
