@@ -42,6 +42,7 @@ public class BotMovement : MonoBehaviour
                 else
                 {
                     stopMove = true;
+                    _agent.enabled = false;
                 }
             }
             _agent.SetDestination(_pathPoints[_index].position);
