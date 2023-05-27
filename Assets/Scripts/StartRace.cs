@@ -40,7 +40,7 @@ public class StartRace : MonoBehaviour
         p_Controller.enabled = true;
         foreach (var botMove in botMovements)
         {
-            botMove.speed = saveData.currentLevel * 5;
+            botMove.speed = saveData.currentLevel * 10;
         }
     }
 
