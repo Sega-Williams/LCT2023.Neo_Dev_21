@@ -55,6 +55,7 @@ public class P_Controller : MonoBehaviour {
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        manualBrake = true;
     }
 
     // finds the corresponding visual wheel
@@ -76,8 +77,17 @@ public class P_Controller : MonoBehaviour {
     }
 
     // Controller logic
+    bool manualBrake = true;
     private void MoveControl(){
         bool gasPedal = Input.GetAxisRaw("Vertical") != 0;
+
+        // Manual brake
+        if(gasPedal) manualBrake = false;
+        if(Input.GetKey(key_Brake)){
+            manualBrake = true;
+        }
+
+        // Calculatings
         int reversingGear = (int)Input.GetAxisRaw("Vertical");
         CalculateRpm(reversingGear);
         CalculateGear(reversingGear);
@@ -92,6 +102,7 @@ public class P_Controller : MonoBehaviour {
 
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
         float motorAxleTorq = currTorq * reversingGear;
+        float rear_BrakeTorque = manualBrake? maxRpm * 2 : maxRpm;
 
         foreach (AxleInfo axleInfo in axleInfos) {
             // Steering wheels
@@ -105,7 +116,7 @@ public class P_Controller : MonoBehaviour {
 
             // Brake
             bool brake = false;
-            if( (motor != (motor * reversingGear) && currentSpeed > reversingSpeed) || Input.GetKey(key_Brake)){
+            if( manualBrake || (motor != (motor * reversingGear) && currentSpeed > reversingSpeed)){
                 // Debug.Log("Brake");
                 brake = true;
             }
@@ -115,8 +126,8 @@ public class P_Controller : MonoBehaviour {
                 axleInfo.leftWheel.brakeTorque = brake? maxRpm/3 : 0;
                 axleInfo.rightWheel.brakeTorque = brake? maxRpm/3 : 0;
             }else{
-                axleInfo.leftWheel.brakeTorque = brake? maxRpm : 0;
-                axleInfo.rightWheel.brakeTorque = brake? maxRpm : 0;
+                axleInfo.leftWheel.brakeTorque = brake? rear_BrakeTorque : 0;
+                axleInfo.rightWheel.brakeTorque = brake? rear_BrakeTorque : 0;
             }
 
             // Gas
