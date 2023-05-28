@@ -33,7 +33,7 @@ public class UI_MainMenuController : MonoBehaviour
             Instantiate(pref_TutorialWindow, FindObjectOfType<Canvas>().transform);
         });
         btn_Credits.onClick.AddListener(() => {
-            Instantiate(pref_CreditsWindow, FindObjectOfType<Canvas>().transform);
+            SceneManager.LoadScene("Credits");
         });
         btn_Exit.onClick.AddListener(()=>{
             Application.Quit();
