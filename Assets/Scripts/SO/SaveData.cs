@@ -7,4 +7,5 @@ public class SaveData : ScriptableObject
 {
     public int currentLevel = 1;
     public string namePlayer = "Player";
+    public Material skinPlayer;
 }

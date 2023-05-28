@@ -13,6 +13,7 @@ public class UI_MainMenuController : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button btn_StartGame;
+    [SerializeField] private Button btn_Wardrobe;
     [SerializeField] private Button btn_Settings;
     [SerializeField] private Button btn_Tutorial;
     [SerializeField] private Button btn_Credits;
@@ -21,6 +22,9 @@ public class UI_MainMenuController : MonoBehaviour
     private void Start() {
         btn_StartGame.onClick.AddListener(() => {
             SceneManager.LoadScene(gameSceneName);
+        });
+        btn_Wardrobe.onClick.AddListener(() => {
+            SceneManager.LoadScene("Wardrobe");
         });
         btn_Settings.onClick.AddListener(() => {
             Instantiate(pref_SettingsWindow, FindObjectOfType<Canvas>().transform);
