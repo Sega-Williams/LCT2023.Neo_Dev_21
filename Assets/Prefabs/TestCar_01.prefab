@@ -107,6 +107,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Version: 11
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
+  m_AreaLightShape: 0
   m_Intensity: 60000000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
@@ -209,14 +217,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 11
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 0
-  m_SpotLightShape: 0
-  m_AreaLightShape: 0
 --- !u!1 &407227317
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +359,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Version: 11
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
+  m_AreaLightShape: 0
   m_Intensity: 60000000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
@@ -461,14 +469,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 11
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 0
-  m_SpotLightShape: 0
-  m_AreaLightShape: 0
 --- !u!1 &461306272895948330
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +772,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Version: 11
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
+  m_AreaLightShape: 0
   m_Intensity: 900000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
@@ -874,14 +882,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 11
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 0
-  m_SpotLightShape: 0
-  m_AreaLightShape: 0
 --- !u!1 &2138468321784224016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,25 +1203,25 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.37
   m_SuspensionSpring:
-    spring: 29000
-    damper: 250
+    spring: 20000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.7
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.12
+    m_ExtremumSlip: 0.23
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.48
-    m_AsymptoteValue: 0.8
-    m_Stiffness: 1.1
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.87
+    m_Stiffness: 1.3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.98
-    m_AsymptoteSlip: 0.4
-    m_AsymptoteValue: 0.79
-    m_Stiffness: 1.05
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.3
+    m_AsymptoteValue: 0.93
+    m_Stiffness: 1.1
   m_Enabled: 1
 --- !u!1 &5253997658295521420
 GameObject:
@@ -1330,6 +1330,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Version: 11
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
+  m_AreaLightShape: 0
   m_Intensity: 900000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
@@ -1432,14 +1440,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 11
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 0
-  m_SpotLightShape: 0
-  m_AreaLightShape: 0
 --- !u!1 &5427977092424041687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,23 +1649,23 @@ WheelCollider:
   m_Radius: 0.37
   m_SuspensionSpring:
     spring: 20000
-    damper: 500
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.55
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.23
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.7
-    m_AsymptoteValue: 0.75
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.87
     m_Stiffness: 1.3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1.1
-    m_AsymptoteSlip: 0.4
-    m_AsymptoteValue: 0.8
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.3
+    m_AsymptoteValue: 0.93
     m_Stiffness: 1.1
   m_Enabled: 1
 --- !u!1 &7589663428331054939
@@ -1776,9 +1776,10 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 500
   maxSteeringAngle: 30
+  steeringAnglePerSecond: 5
   key_Brake: 308
-  key_Boost: 0
   reversingSpeed: 30
+  maxSpeed: 250
   currentSpeed: 0
   maxRpm: 7500
   currentRpm: 0
@@ -1863,6 +1864,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ee161f99b18cd5b9f2464d97467328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key_Nitro: 306
+  maxVolumeNitro: 100
+  nitroRecovery: 3
+  nitroSpendPerTime: 20
+  torqMultiplier: 2
+  currentNitro: 0
 --- !u!114 &194344074621131434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,25 +1979,25 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.37
   m_SuspensionSpring:
-    spring: 29000
-    damper: 250
+    spring: 20000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.7
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.12
+    m_ExtremumSlip: 0.23
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.48
-    m_AsymptoteValue: 0.8
-    m_Stiffness: 1.1
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.87
+    m_Stiffness: 1.3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.98
-    m_AsymptoteSlip: 0.4
-    m_AsymptoteValue: 0.79
-    m_Stiffness: 1.05
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.3
+    m_AsymptoteValue: 0.93
+    m_Stiffness: 1.1
   m_Enabled: 1
 --- !u!1 &7873246827052826210
 GameObject:
@@ -2068,23 +2075,23 @@ WheelCollider:
   m_Radius: 0.37
   m_SuspensionSpring:
     spring: 20000
-    damper: 500
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.55
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.23
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.7
-    m_AsymptoteValue: 0.75
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.87
     m_Stiffness: 1.3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1.1
-    m_AsymptoteSlip: 0.4
-    m_AsymptoteValue: 0.8
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.3
+    m_AsymptoteValue: 0.93
     m_Stiffness: 1.1
   m_Enabled: 1
 --- !u!1 &8754447558588660230
