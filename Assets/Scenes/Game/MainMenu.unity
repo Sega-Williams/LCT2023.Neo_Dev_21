@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 440.09668, g: 377.11743, b: 404.58398, a: 1}
+  m_IndirectSpecularColor: {r: 440.09665, g: 377.11743, b: 404.58398, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.4
+  m_fontSize: 18.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.4
+  m_fontSize: 18.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.4
+  m_fontSize: 18.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1653,7 +1653,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.4
+  m_fontSize: 18.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.7
+  m_fontSize: 22.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1983,7 +1983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSceneName: Wardrobe
   pref_SettingsWindow: {fileID: 2903493071349254558, guid: c4f26a4acfc7ce0de9ad5aa755264af5, type: 3}
-  pref_TutorialWindow: {fileID: 0}
+  pref_TutorialWindow: {fileID: 2903493071349254558, guid: 5437e4c52317da8f2ae76d8483473336, type: 3}
   pref_CreditsWindow: {fileID: 0}
   btn_StartGame: {fileID: 2006194152}
   btn_Wardrobe: {fileID: 1806441054}
@@ -2279,7 +2279,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.4
+  m_fontSize: 18.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

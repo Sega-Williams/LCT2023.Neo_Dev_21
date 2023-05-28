@@ -30,10 +30,10 @@ public class UI_MainMenuController : MonoBehaviour
             Instantiate(pref_SettingsWindow, FindObjectOfType<Canvas>().transform);
         });
         btn_Tutorial.onClick.AddListener(() => {
-            Debug.Log("btn_Tutorial");
+            Instantiate(pref_TutorialWindow, FindObjectOfType<Canvas>().transform);
         });
         btn_Credits.onClick.AddListener(() => {
-            Debug.Log("btn_Credits");
+            Instantiate(pref_CreditsWindow, FindObjectOfType<Canvas>().transform);
         });
         btn_Exit.onClick.AddListener(()=>{
             Application.Quit();
