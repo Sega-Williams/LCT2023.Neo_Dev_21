@@ -19,6 +19,7 @@ public class P_Controller : MonoBehaviour {
 
     // Controller
     [SerializeField] KeyCode key_Brake; 
+    [SerializeField] KeyCode key_Boost; 
     [SerializeField] int reversingSpeed = 30; // brake to reverse move
 
 
@@ -86,6 +87,11 @@ public class P_Controller : MonoBehaviour {
         if(Input.GetKey(key_Brake)){
             manualBrake = true;
         }
+        // Boost
+        bool manualBoost = false;
+        if(Input.GetKey(key_Boost)){
+            manualBoost = true;
+        }
 
         // Calculatings
         int reversingGear = (int)Input.GetAxisRaw("Vertical");
@@ -101,7 +107,7 @@ public class P_Controller : MonoBehaviour {
         }
 
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-        float motorAxleTorq = currTorq * reversingGear;
+        float motorAxleTorq = currTorq * reversingGear * (manualBoost? 10 : 1);
         float rear_BrakeTorque = manualBrake? maxRpm * 2 : maxRpm;
 
         foreach (AxleInfo axleInfo in axleInfos) {
@@ -203,5 +209,7 @@ public class P_Controller : MonoBehaviour {
 
         return speed;
     }
+
+
 }
 
