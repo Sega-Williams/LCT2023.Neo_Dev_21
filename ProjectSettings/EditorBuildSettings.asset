@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/TESTGAME_01.unity
     guid: 6082f1c611d201c1badcfcafacd2b72c
+  - enabled: 1
+    path: Assets/Scenes/Game/Wardrobe.unity
+    guid: b3fd7c9efc07e8d4185cb6f34250ac25
   m_configObjects: {}
