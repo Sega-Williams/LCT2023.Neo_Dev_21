@@ -215,6 +215,11 @@ public class P_Controller : MonoBehaviour {
         return speed;
     }
 
-
+    public float GetRPM(){
+        return currentRpm < maxRpm? currentRpm / maxRpm : Random.Range(.95f, 1f);
+    }
+    public float GetSpeed(){
+        return currentSpeed < maxSpeed? currentSpeed / maxSpeed : Random.Range(.95f, 1f);
+    }
 }
 

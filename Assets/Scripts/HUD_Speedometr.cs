@@ -14,7 +14,7 @@ public class HUD_Speedometr : MonoBehaviour
         p_Controller = FindObjectOfType<P_Controller>();
     }
     private void Update() {
-        speedometerText.SetText(p_Controller.currentSpeed + " км/ч");
-        rpmText.SetText("об/м: " + (int)p_Controller.currentRpm);
+        speedometerText.SetText($"{p_Controller.currentSpeed}\nкм/ч");
+        rpmText.SetText($"{(int)p_Controller.currentRpm}\nоб/м");
     }
 }
