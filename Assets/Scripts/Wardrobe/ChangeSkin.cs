@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeSkin : MonoBehaviour
 {
-    [SerializeField] SkinnedMeshRenderer player;
+    [SerializeField] MeshRenderer player;
     [SerializeField] private SaveData saveData;
     public void ChangeMesh(Material changeMaterial)
     {

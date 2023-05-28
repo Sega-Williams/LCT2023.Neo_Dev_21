@@ -5,10 +5,10 @@ using UnityEngine;
 public class CurrentSkin : MonoBehaviour
 {
     [SerializeField] private SaveData saveData;
-    SkinnedMeshRenderer skinnedMesh;
+    MeshRenderer skinnedMesh;
     void Start()
     {
-        skinnedMesh = GetComponent<SkinnedMeshRenderer>();
+        skinnedMesh = GetComponent<MeshRenderer>();
         if (saveData.skinPlayer!=null)
         {
             skinnedMesh.material = saveData.skinPlayer;
