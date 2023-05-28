@@ -12,7 +12,7 @@ public class Finish : MonoBehaviour
     public Dictionary<int, string> leaderBoard = new Dictionary<int, string>();
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent<PathFollower>(out PathFollower bot) || other.gameObject.TryGetComponent<P_Controller>(out P_Controller player))
+        if (other.gameObject.TryGetComponent<AI_Controller>(out AI_Controller bot) || other.gameObject.TryGetComponent<P_Controller>(out P_Controller player))
         {
             counter++;
             leaderBoard.Add(counter, other.gameObject.name);

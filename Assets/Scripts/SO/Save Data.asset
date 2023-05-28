@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35121a7f868e95d4a9243b4c8ff30d3e, type: 3}
   m_Name: Save Data
   m_EditorClassIdentifier: 
-  currentLevel: 1
-  namePlayer: Player
+  currentLevel: 6
+  namePlayer: "\u0427\u0438\u0432\u0430\u043F\u0447\u0438\u0447"
