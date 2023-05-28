@@ -12,9 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/PauseMenu.unity
     guid: ad23a0c3720f48ff7bda3b38fcece89a
   - enabled: 1
-    path: Assets/Scenes/Game/TESTGAME_01.unity
-    guid: 6082f1c611d201c1badcfcafacd2b72c
-  - enabled: 1
     path: Assets/Scenes/Game/Wardrobe.unity
     guid: b3fd7c9efc07e8d4185cb6f34250ac25
+  - enabled: 1
+    path: "Assets/Scenes/Game/\u041D\u0435\u043C\u043D\u043E\u0433\u043E \u0448\u0430\u043C\u0430\u043D\u044E
+      \u0442\u0443\u0442.unity"
+    guid: 41663c4986b8bfbfea95dbd30e361024
   m_configObjects: {}

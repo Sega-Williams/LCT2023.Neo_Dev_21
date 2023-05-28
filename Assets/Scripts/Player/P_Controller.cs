@@ -15,12 +15,13 @@ public class AxleInfo {
 public class P_Controller : MonoBehaviour {
     public List<AxleInfo> axleInfos; 
     public float maxMotorTorque;
-    public float maxSteeringAngle;
+    public float maxSteeringAngle;    
+    public float steeringAnglePerSecond;    
 
     // Controller
     [SerializeField] KeyCode key_Brake; 
-    [SerializeField] KeyCode key_Boost; 
     [SerializeField] int reversingSpeed = 30; // brake to reverse move
+    [SerializeField] public float maxSpeed = 250f;
 
 
     // For UI
@@ -49,6 +50,7 @@ public class P_Controller : MonoBehaviour {
 
     // Private
     Rigidbody rb;
+    P_Boost nitro;
 
     // Gas Variables
     float motor;
@@ -56,6 +58,7 @@ public class P_Controller : MonoBehaviour {
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        nitro = GetComponent<P_Boost>();
         manualBrake = true;
     }
 
@@ -87,11 +90,6 @@ public class P_Controller : MonoBehaviour {
         if(Input.GetKey(key_Brake)){
             manualBrake = true;
         }
-        // Boost
-        bool manualBoost = false;
-        if(Input.GetKey(key_Boost)){
-            manualBoost = true;
-        }
 
         // Calculatings
         int reversingGear = (int)Input.GetAxisRaw("Vertical");
@@ -106,15 +104,20 @@ public class P_Controller : MonoBehaviour {
             currTorq = CalculateCurrentTorq(gear, motor);
         }
 
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-        float motorAxleTorq = currTorq * reversingGear * (manualBoost? 10 : 1);
+        float steering = maxSteeringAngle * Input.GetAxisRaw("Horizontal");
+        
+        // formula of steering by speed
+        steering *= (maxSpeed + 10 - currentSpeed) / maxSpeed;
+
+        float motorAxleTorq = currTorq * reversingGear * nitro.Nitro_TorqBoost_Multiplier();
+        float front_BrakeTorque = manualBrake? maxRpm * 0.5f : maxRpm;
         float rear_BrakeTorque = manualBrake? maxRpm * 2 : maxRpm;
 
         foreach (AxleInfo axleInfo in axleInfos) {
             // Steering wheels
             if (axleInfo.steering) {
-                axleInfo.leftWheel.steerAngle = steering;
-                axleInfo.rightWheel.steerAngle = steering;
+                axleInfo.leftWheel.steerAngle = Mathf.Lerp(axleInfo.leftWheel.steerAngle, steering, steeringAnglePerSecond * Time.fixedDeltaTime);
+                axleInfo.rightWheel.steerAngle = Mathf.Lerp(axleInfo.rightWheel.steerAngle, steering, steeringAnglePerSecond * Time.fixedDeltaTime);
             }
             // Visual steering wheels
             ApplyLocalPositionToVisuals(axleInfo.leftWheel, axleInfo.leftWheelMesh);
@@ -129,17 +132,19 @@ public class P_Controller : MonoBehaviour {
 
             // brake torque on steering wheels is less than rear
             if(axleInfo.steering){
-                axleInfo.leftWheel.brakeTorque = brake? maxRpm/3 : 0;
-                axleInfo.rightWheel.brakeTorque = brake? maxRpm/3 : 0;
+                axleInfo.leftWheel.brakeTorque = brake? front_BrakeTorque : 0;
+                axleInfo.rightWheel.brakeTorque = brake? front_BrakeTorque : 0;
             }else{
                 axleInfo.leftWheel.brakeTorque = brake? rear_BrakeTorque : 0;
                 axleInfo.rightWheel.brakeTorque = brake? rear_BrakeTorque : 0;
             }
 
             // Gas
-            if (axleInfo.motor) {
-                axleInfo.leftWheel.motorTorque = motor != 0? motorAxleTorq : axleInfo.leftWheel.motorTorque * 0.83f; // 0.83 - speed of lost torque
-                axleInfo.rightWheel.motorTorque = motor != 0? motorAxleTorq : axleInfo.leftWheel.motorTorque * 0.83f; // 0.83 - speed of lost torque
+            if(currentSpeed < maxSpeed){
+                if (axleInfo.motor) {
+                    axleInfo.leftWheel.motorTorque = motor != 0? motorAxleTorq : axleInfo.leftWheel.motorTorque * 0.83f; // 0.83 - speed of lost torque
+                    axleInfo.rightWheel.motorTorque = motor != 0? motorAxleTorq : axleInfo.leftWheel.motorTorque * 0.83f; // 0.83 - speed of lost torque
+                }
             }
         }
     }
