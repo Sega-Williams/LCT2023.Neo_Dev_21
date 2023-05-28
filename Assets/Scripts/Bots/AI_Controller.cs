@@ -72,7 +72,7 @@ public class AI_Controller : MonoBehaviour
         collider.GetWorldPose(out position, out rotation);
 
         //visualWheel.transform.position = position;
-        visualWheel.transform.rotation = rotation;
+        //visualWheel.transform.rotation = rotation;
     }
 
     public void FixedUpdate()
